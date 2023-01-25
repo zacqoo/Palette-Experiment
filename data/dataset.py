@@ -9,7 +9,7 @@ from .util.mask import (bbox2mask, brush_stroke_mask, get_irregular_mask, random
 
 IMG_EXTENSIONS = [
     '.jpg', '.JPG', '.jpeg', '.JPEG',
-    '.png', '.PNG', '.ppm', '.PPM', '.bmp', '.BMP',
+    '.png', '.PNG', '.ppm', '.PPM', '.bmp', '.BMP','.tiff','tif',
 ]
 
 def is_image_file(filename):
@@ -30,7 +30,9 @@ def make_dataset(dir):
     return images
 
 def pil_loader(path):
-    return Image.open(path).convert('RGB')
+    im16 = np.array(Image.open(path))
+    im8 = (im16/256).astype('uint8')
+    return Image.fromarray(im8)
 
 class InpaintDataset(data.Dataset):
     def __init__(self, data_root, mask_config={}, data_len=-1, image_size=[256, 256], loader=pil_loader):
@@ -42,7 +44,7 @@ class InpaintDataset(data.Dataset):
         self.tfs = transforms.Compose([
                 transforms.Resize((image_size[0], image_size[1])),
                 transforms.ToTensor(),
-                transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5,0.5, 0.5])
+                transforms.Normalize(mean=[0.5], std=[0.5])
         ])
         self.loader = loader
         self.mask_config = mask_config
