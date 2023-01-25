@@ -71,11 +71,15 @@ The preparation of data consist of modifying the corresponding configure file to
 ``` 
 More choices about **dataloader** and **validation split** also can be found in `datasets`  part of configure file.
 
+Note that we can create different mask_modes.
+
 ### Model and networks options 
 
 All customerized modifications could be done by modifying the following file :
 
+```
 inpainting_satellite.json
+```
 
 For example : the input_channel and out_put channel of Unet
 
