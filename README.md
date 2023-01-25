@@ -23,8 +23,7 @@ There are some implementation details with paper descriptions:
 - [x] Multiple GPU Training (DDP)
 - [x] EMA
 - [x] Metrics (now for FID, IS)
-- [x] Dataset (now for inpainting, uncropping, colorization)
-- [x] Google colab script 🌟(now for inpainting)
+- [x] Dataset (different masks proposed)
 
 ### Task
 
@@ -43,9 +42,7 @@ Bon, je mets pas ma photo sur github
 
 #### TenGeoP-SARwv
 
-Results with 5 epochs 
-
-Please download the two files Process_machain.tiff in main folder
+Results with 5 epochs : Please download the two files Process_machain.tiff in main folder
 
 ## Usage
 ### Environment
@@ -103,7 +100,7 @@ We test the U-Net backbone used in `SR3` and `Guided Diffusion`,  and `Guided Di
 1. Set the model path following the steps in **Resume Training** part.
 2. Run the script:
 ```python
-python run.py -p test -c config/<file json for test to create>
+python run.py -p test -c config/<file json test to create>
 ```
 
 ### Evaluation
