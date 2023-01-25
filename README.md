@@ -4,7 +4,12 @@
 
 ## Brief
 
-This is an adaptation of an unofficial implementation of **Palette: Image-to-Image Diffusion Models** by **Pytorch** (https://github.com/Janspiry/Palette-Image-to-Image-Diffusion-Models)
+This is an adaptation of an unofficial implementation of **Palette: Image-to-Image Diffusion Models** by **Pytorch** (https://github.com/Janspiry/Palette-Image-to-Image-Diffusion-Models). To use the code in Google Colab, one can simply do 
+
+```
+%cd /content/
+!git clone https://github.com/ben2022lo/Palette-Satellite.git
+```
 
 There are some implementation details with paper descriptions:
 
