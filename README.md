@@ -28,7 +28,7 @@ There are some implementation details with paper descriptions:
 
 ### Task
 
-I try to adapted the code for the following dataset:
+I try to adapt the code for the following dataset:
 TenGeoP-SARwv (Wang Chen, 2018) in which we have above 50000 images
 
 ## Results
@@ -45,9 +45,7 @@ Bon, je mets pas ma photo sur github
 
 Results with 5 epochs 
 
-| ![Process_02323](misc//image//Process_02323.jpg) |    ![Process_02323](misc//image//Process_26190.jpg)  |
-| ------------------------------------------------ | ---- |
-
+Please download the two files Process_machain.tiff in main folder
 
 ## Usage
 ### Environment
@@ -57,7 +55,13 @@ pip install -r requirements.txt
 
 ### Data Prepare
 
-The preparation of data consist of modifying the corresponding configure file to point to your data. Take the following as an example:
+The images should be placed in 
+
+```
+Palette-Satellite/datasets/palette_dataset1_train
+```
+
+Or you can modift the configure file json to point to your data. Take the following as an example:
 
 ```yaml
 "which_dataset": {  // import designated dataset using arguments 
