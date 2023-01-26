@@ -30,9 +30,14 @@ def make_dataset(dir):
     return images
 
 def pil_loader(path):
-    im16 = np.array(Image.open(path))
-    im8 = (im16/256).astype('uint8')
-    return Image.fromarray(im8)
+    im = Image.open(path)
+    if im.mode=='RGBA':
+      res = im.convert('L')
+    else:
+      im16 = np.array(im)
+      im8 = (im16/256).astype('uint8')
+      res = Image.fromarray(im8)
+    return res
 
 class InpaintDataset(data.Dataset):
     def __init__(self, data_root, mask_config={}, data_len=-1, image_size=[256, 256], loader=pil_loader):
@@ -75,9 +80,21 @@ class InpaintDataset(data.Dataset):
         elif self.mask_mode == 'center':
             h, w = self.image_size
             mask = bbox2mask(self.image_size, (h//4, w//4, h//2, w//2))
-        elif self.mask_mode == 'quart':
+        elif self.mask_mode == 'minor_center':
             h, w = self.image_size
-            mask = bbox2mask(self.image_size, (0, 0, h//2, w//2)) 
+            mask = bbox2mask(self.image_size, (h//8*3, w//8*3, h//4, w//4))    
+        elif self.mask_mode == 'top_left':
+            h, w = self.image_size
+            mask = bbox2mask(self.image_size, (0, 0, h//2, w//2))
+        elif self.mask_mode == 'top_right':
+            h, w = self.image_size
+            mask = bbox2mask(self.image_size, (0, w//2, h//2, w//2))
+        elif self.mask_mode == 'bottom_left':
+            h, w = self.image_size
+            mask = bbox2mask(self.image_size, (h//2, 0, h//2, w//2)) 
+        elif self.mask_mode == 'bottom_right':
+            h, w = self.image_size
+            mask = bbox2mask(self.image_size, (h//2, w//2, h//2, w//2))
         elif self.mask_mode == 'irregular':
             mask = get_irregular_mask(self.image_size)
         elif self.mask_mode == 'free_form':
