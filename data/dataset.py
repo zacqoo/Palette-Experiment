@@ -75,6 +75,9 @@ class InpaintDataset(data.Dataset):
         elif self.mask_mode == 'center':
             h, w = self.image_size
             mask = bbox2mask(self.image_size, (h//4, w//4, h//2, w//2))
+        elif self.mask_mode == 'quart':
+            h, w = self.image_size
+            mask = bbox2mask(self.image_size, (0, 0, h//2, w//2)) 
         elif self.mask_mode == 'irregular':
             mask = get_irregular_mask(self.image_size)
         elif self.mask_mode == 'free_form':
