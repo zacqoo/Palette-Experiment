@@ -105,7 +105,7 @@ We test the U-Net backbone used in `SR3` and `Guided Diffusion`,  and `Guided Di
 1. Set the model path following the steps in **Resume Training** part.
 2. Run the script:
 ```python
-python run.py -p test -c config/<file json test to create>
+python run.py -p test -c config/inpainting_satellite.json
 ```
 
 ### Evaluation
