@@ -30,24 +30,7 @@ There are some implementation details with paper descriptions:
 - [x] Metrics (now for FID, IS)
 - [x] Dataset (different masks proposed)
 
-### Task
-
-I try to adapt the code for the following dataset:
-TenGeoP-SARwv (Wang Chen, 2018) in which we have above 50000 images
-
-## Results
-
-The DDPM model requires significant computational resources, and we have only built a few example models to validate the ideas in this paper. A joy training is done for 700 images and we've got some kind of satisfied results  
-
 ### Visuals
-
-#### Pretrained Celeb 
-
-Bon, je mets pas ma photo sur github
-
-#### TenGeoP-SARwv
-
-Results with 5 epochs : Please download the two files Process_machain.tiff in main folder
 
 ## Usage
 ### Environment
@@ -57,10 +40,10 @@ pip install -r requirements.txt
 
 ### Data Prepare
 
-The images should be placed in 
+The images are in 
 
 ```
-Palette-Satellite/datasets/palette_dataset1_train
+Palette-Satellite/datasets/train
 ```
 
 Or you can modift the configure file json to point to your data. Take the following as an example:
@@ -84,7 +67,7 @@ Note that we can create different mask_modes.
 All customerized modifications could be done by modifying the following file :
 
 ```
-inpainting_satellite.json
+inpainting_m.json
 ```
 
 For example : the input_channel and out_put channel of Unet
@@ -96,7 +79,7 @@ For example : the input_channel and out_put channel of Unet
 1. Run the script:
 
 ```python
-python run.py -p train -c config/inpainting_satellite.json
+python run.py -p train -c config/inpainting_m.json
 ```
 
 We test the U-Net backbone used in `SR3` and `Guided Diffusion`,  and `Guided Diffusion` one have a more robust performance in our current experiments.  More choices about **backbone**, **loss** and **metric** can be found in `which_networks`  part of configure file.
@@ -105,7 +88,7 @@ We test the U-Net backbone used in `SR3` and `Guided Diffusion`,  and `Guided Di
 1. Set the model path following the steps in **Resume Training** part.
 2. Run the script:
 ```python
-python run.py -p test -c config/inpainting_satellite.json
+python run.py -p test -c config/inpainting_m.json
 ```
 
 ### Evaluation
