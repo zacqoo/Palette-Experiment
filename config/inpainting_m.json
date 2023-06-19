@@ -55,7 +55,7 @@
             },
             "dataloader":{
                 "args":{
-                    "batch_size": 2,
+                    "batch_size": 1,
                     "num_workers": 1,
                     "pin_memory": true
                 }
@@ -67,7 +67,7 @@
         "which_model": { // import designated  model(trainer) using arguments 
             "name": ["models.model", "Palette"], // import Model() class / function(not recommend) from models.model.py (default is [models.model.py])
             "args": {
-                "sample_num": 2, // process of each image
+                "sample_num": 1, // process of each image
                 "task": "inpainting",
                 "ema_scheduler": {
                     "ema_start": 1,
@@ -97,8 +97,8 @@
                         ],
                         "attn_res": [
                             // 32,
-                            //16
-                            8
+                            16
+                            //8
                         ],
                         "num_head_channels": 32,
                         "res_blocks": 2,
@@ -132,9 +132,9 @@
     },
 
     "train": { // arguments for basic training
-        "n_epoch": 20, // max epochs, not limited now
+        "n_epoch": 40, // max epochs, not limited now
         "n_iter": 1e8, // max interations
-        "val_epoch": 5, // valdation every specified number of epochs
+        "val_epoch": 10, // valdation every specified number of epochs
         "save_checkpoint_epoch": 10,
         "log_iter": 1e3, // log every specified number of iterations
         "tensorboard" : true // tensorboardX enable
