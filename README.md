@@ -8,7 +8,7 @@ This is an adaptation of an unofficial implementation of **Palette: Image-to-Ima
 
 ```
 %cd /content/
-!git clone https://github.com/ben2022lo/Palette-Satellite.git
+!git clone https://github.com/zacqoo/Palette-Experiment.git
 ```
 
 There are some implementation details with paper descriptions:
